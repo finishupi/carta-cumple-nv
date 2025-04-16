@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta de Cumpleaños</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #d5b0ff, #e2aaff); /* Fondo suave morado */
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .envelope {
+      width: 700px; /* Ancho del sobre */
+      height: 500px;
+      background: #e1b3ff; /* Tono suave para el sobre */
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.3s ease; /* Transición más suave */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+      border-radius: 15px; /* Bordes redondeados */
+      display: flex;
+      justify-content: center; /* Centra la carta dentro del sobre */
+      align-items: center; /* Centra la carta verticalmente */
+    }
+
+    .envelope:hover {
+      transform: translateY(-10px); /* Hover para darle un toque de interactividad */
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2); /* Sombra al hacer hover */
+    }
+
+    .envelope::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%); /* Centrado horizontal del triángulo */
+      width: 0;
+      height: 0;
+      border-left: 350px solid transparent; /* Ajuste del ancho del triángulo */
+      border-right: 350px solid transparent; /* Ajuste del ancho del triángulo */
+      border-bottom: 180px solid #d7a6f7; /* Tono morado más claro para el triángulo */
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      z-index: 0;
+    }
+
+    /* Para mostrar la carta cuando el sobre es clickeado */
+    .envelope.open .card {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+
+    .card {
+      position: relative;
+      background: white;
+      border-radius: 20px; /* Bordes más suaves */
+      padding: 40px;
+      text-align: center;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.5s ease-in-out; /* Animación suave */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+      opacity: 0; /* Empieza invisible */
+      width: 80%; /* Asegura que la carta se ajuste bien */
+      max-width: 700px; /* Máximo tamaño de la carta */
+    }
+
+    .card.open {
+      transform: scaleY(1);
+      opacity: 1; /* Aparece con suavidad */
+    }
+
+    .card h1 {
+      font-size: 2.5em;
+      color: #6a3e9f; /* Tono morado para el texto */
+      margin: 20px 0;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Sombra en el texto */
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .card p {
+      font-size: 1.3em;
+      color: #5d3f6f; /* Tono morado más suave para el texto */
+      line-height: 1.6;
+      margin-top: 25px;
+      font-style: italic;
+    }
+
+    .heart-container {
+      margin-bottom: 20px; /* Espacio entre el corazón y el texto */
+    }
+
+    .heart {
+      font-size: 100px; /* Corazón grande */
+      color: #9b4dff; /* Tono morado para el corazón */
+      animation: heartbeat 1s infinite; /* Animación de latido */
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); } /* Efecto de latido más suave */
+    }
+  </style>
+</head>
+<body>
+  <div class="envelope" onclick="toggleCard()">
+    <div class="card">
+      <div class="heart-container">
+        <span class="heart">❤️</span>
+      </div>
+      <h1>Feliz Cumpleaños, mi amor!</h1>
+      <p>Gracias por aparecer en mi vida, con tu sonrisa maravillosa. Hoy celebramo tu cumpleaño, y que tengo la suerte de tener
+        te conmigo. Te quelo mucho mipinchecha hermosa ❤️</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleCard() {
+      const card = document.querySelector('.card');
+      card.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
